@@ -8,6 +8,6 @@ namespace Artus_BARS_Matias_OTTENSEN_Problème_POO
 {
     class Plateau
     {
-
+        
     }
 }
