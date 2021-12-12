@@ -15,7 +15,7 @@ namespace Artus_BARS_Matias_OTTENSEN_Problème_POO
         public Dictionnaire()
         {
             this.langue = "français";
-            string[] dico = File.ReadAllLines("Francais.txt");
+            string[] dico = File.ReadAllLines(@"Francais.txt");
             this.mots = null;
             foreach (string line in dico)
             {
@@ -29,11 +29,15 @@ namespace Artus_BARS_Matias_OTTENSEN_Problème_POO
                 this.motsTriés.Add(this.mots);
             }
         }
+        public List<string> Mots
+        {
+            get { return this.mots; }
+        }
         public override string ToString()
         {
             string result = "Langue : " + this.langue + "\n";
             int longueurMot = 1;
-            foreach(List<string> listeMots in this.motsTriés)
+            foreach (List<string> listeMots in this.motsTriés)
             {
                 int nbMots = 0;
                 longueurMot++;
@@ -45,17 +49,24 @@ namespace Artus_BARS_Matias_OTTENSEN_Problème_POO
             }
             return result;
         }
-        public bool RechDichoRécursif(string mot)
+        public bool RechDichoRécursif(string mot, int begin, int end)
         {
-            bool result = true;
+            bool result = false;
             int middle = this.mots.Count / 2;
-            if(mots[middle] == mot)
+            if (String.Compare(mots[middle], mot) == 0)
             {
-                return result;
+                return !result;
             }
             else
             {
-                
+                if (String.Compare(mots[middle], mot) < 0)
+                {
+                    return RechDichoRécursif(mot, middle + 1, this.mots.Count);
+                }
+                else
+                {
+                    return RechDichoRécursif(mot, 0, middle - 1);
+                }
             }
             
         }

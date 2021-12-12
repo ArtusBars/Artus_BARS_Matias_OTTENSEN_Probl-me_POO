@@ -22,7 +22,7 @@ namespace Artus_BARS_Matias_OTTENSEN_Problème_POO
         {
             try
             {
-                string[] joueur = File.ReadAllLines("Joueurs.txt");
+                string[] joueur = File.ReadAllLines(@"Joueurs.txt");
                 char séparateur = ';';
                 for (int k = 0; k < joueur.Length; k++)
                 {
